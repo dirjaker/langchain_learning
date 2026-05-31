@@ -7,11 +7,40 @@
 ```
 langchain_learning/
 ├── CHEATSHEET.md                    # 面试速查表
+├── TECHNICAL_DOC.md                 # 技术文档（深入解析）
 ├── README.md                        # 项目文档
 ├── requirements.txt                 # 依赖
+│
 ├── 01_langchain_evolution.py        # LangChain 版本演进
+│   ├── 旧版 API (已废弃)
+│   ├── LCEL 核心创新
+│   ├── Runnable 接口
+│   └── 结构化输出
+│
 ├── 02_langgraph_basics.py           # LangGraph 基础概念
-└── 03_practical_examples.py         # 实战示例
+│   ├── State/Node/Edge
+│   ├── 简单图
+│   ├── 条件分支
+│   └── ReAct Agent (循环图)
+│
+├── 03_practical_examples.py         # 实战示例
+│   ├── RAG 工作流
+│   ├── 多 Agent 协作
+│   └── 人机协作 (Human-in-the-Loop)
+│
+├── 04_core_components.py            # 核心组件详解
+│   ├── Prompt Template
+│   ├── Output Parser
+│   ├── Memory
+│   ├── Runnable 组件
+│   └── Tool 定义
+│
+└── 05_langgraph_advanced.py         # LangGraph 高级模式
+    ├── 子图 (Subgraph)
+    ├── 并行执行 (Fan-out/Fan-in)
+    ├── 流式输出
+    ├── 检查点 (Checkpoint)
+    └── Map-Reduce
 ```
 
 ## 🚀 运行方式
@@ -20,14 +49,12 @@ langchain_learning/
 # 激活虚拟环境
 source venv/bin/activate
 
-# 运行 LangChain 版本演进
-python 01_langchain_evolution.py
-
-# 运行 LangGraph 基础
-python 02_langgraph_basics.py
-
-# 运行实战示例
-python 03_practical_examples.py
+# 运行各个模块
+python 01_langchain_evolution.py   # LangChain 版本演进
+python 02_langgraph_basics.py      # LangGraph 基础
+python 03_practical_examples.py    # 实战示例
+python 04_core_components.py       # 核心组件
+python 05_langgraph_advanced.py    # LangGraph 高级
 ```
 
 ## 📖 内容概览
@@ -55,12 +82,31 @@ python 03_practical_examples.py
 | 多 Agent | Agent 协作 |
 | 人机协作 | Human-in-the-Loop |
 
+### 04_core_components.py — 核心组件
+| 模块 | 面试考点 |
+|------|----------|
+| Prompt Template | ChatPromptTemplate, FewShot |
+| Output Parser | Json, Pydantic, List |
+| Memory | 对话历史管理 |
+| Runnable | Passthrough, Lambda, Parallel |
+| Tool | @tool 装饰器 |
+
+### 05_langgraph_advanced.py — LangGraph 高级
+| 模块 | 面试考点 |
+|------|----------|
+| 子图 | 模块化复用 |
+| 并行执行 | Fan-out/Fan-in |
+| 流式输出 | stream() |
+| 检查点 | 持久化/恢复 |
+| Map-Reduce | 批量处理 |
+
 ## 💡 学习建议
 
 1. **先看 CHEATSHEET.md** — 面试前 30 分钟快速复习
-2. **运行代码** — 亲手运行，观察输出
-3. **理解核心概念** — LCEL、Runnable、State、Node、Edge
-4. **掌握常见模式** — RAG、ReAct、多 Agent
+2. **再看 TECHNICAL_DOC.md** — 深入理解概念
+3. **运行代码** — 亲手运行，观察输出
+4. **理解核心概念** — LCEL、Runnable、State、Node、Edge
+5. **掌握常见模式** — RAG、ReAct、多 Agent
 
 ## 📊 LangChain 版本演进
 
@@ -87,6 +133,10 @@ chain = prompt | llm | output_parser
 
 # 调用
 result = chain.invoke({"input": "..."})
+
+# 流式
+for chunk in chain.stream({"input": "..."}):
+    print(chunk, end="")
 ```
 
 ### LangGraph
@@ -108,6 +158,7 @@ result = app.invoke(initial_state)
 ## 📚 配套文档
 
 - 面试速查表：`CHEATSHEET.md`
+- 技术文档：`TECHNICAL_DOC.md`
 - LangChain 官方文档：https://python.langchain.com/
 - LangGraph 官方文档：https://langchain-ai.github.io/langgraph/
 
