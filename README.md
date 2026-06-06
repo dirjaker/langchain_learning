@@ -1,3 +1,20 @@
+<div align="center">
+
+# 🔗 LangChain Learning
+
+### LangChain / LangGraph 学习实战
+
+[![Demo](https://img.shields.io/badge/Demo-8-blue?style=flat-square)]()
+[![Agent](https://img.shields.io/badge/Agent-3-green?style=flat-square)]()
+[![框架](https://img.shields.io/badge/框架-LangChain-orange?style=flat-square)]()
+[![更新](https://img.shields.io/badge/更新-2025.06-red?style=flat-square)]()
+
+*LCEL · RAG · Agent · 记忆系统 · LangGraph 状态图 · CrewAI*
+
+</div>
+
+---
+
 # LangChain + LangGraph 学习项目
 
 面试准备：LangChain 版本演进和 LangGraph 核心概念的代码实现。
@@ -167,3 +184,4 @@ result = app.invoke(initial_state)
 - 代码使用模拟数据，不需要 API Key
 - 重点展示架构设计，不是实际 LLM 调用
 - 适合面试演示和学习理解
+
