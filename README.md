@@ -62,6 +62,10 @@ langchain_learning/
 
 ## 🚀 运行方式
 
+## 🌐 在线阅读
+
+📖 **文档站点**: [https://dirjaker.github.io/langchain_learning/](https://dirjaker.github.io/langchain_learning/)
+
 ```bash
 # 激活虚拟环境
 source venv/bin/activate
