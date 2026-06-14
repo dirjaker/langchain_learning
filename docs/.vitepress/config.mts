@@ -24,7 +24,7 @@ export default defineConfig({
         items: [
           { text: '面试速查表', link: '/CHEATSHEET' },
           { text: '技术文档', link: '/TECHNICAL_DOC' },
-          { text: '技术设计文档', link: '/技术文档' },
+          { text: '技术设计文档', link: '/technical-doc-cn' },
         ]
       },
       {
