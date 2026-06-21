@@ -391,6 +391,6 @@ for state in app.get_state_history(config):
 |------|------|
 | **代码量** | 1,769 行 Python（5 个源文件） |
 | **文件数** | 5 个 .py + 3 个 .md + 1 个 requirements.txt |
-| **技术栈** | Python 3.11, LangChain 1.3.x, LangGraph, Pydantic, TypedDict |
+| **技术栈** | Python 3.12, LangChain 1.3.x, LangGraph 1.2.x, Pydantic, TypedDict |
 | **覆盖知识点** | LCEL, Runnable, State/Node/Edge, 条件分支, 循环图, RAG, ReAct, 多 Agent, 子图, 并行, 流式, 检查点, Map-Reduce, Human-in-the-Loop |
 | **适用场景** | AI 工程岗位面试准备、LangChain/LangGraph 入门学习 |

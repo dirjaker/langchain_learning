@@ -13,6 +13,9 @@ hero:
       text: 技术文档
       link: /TECHNICAL_DOC
     - theme: alt
+      text: 更新日志
+      link: /CHANGELOG
+    - theme: alt
       text: GitHub
       link: https://github.com/dirjaker/langchain_learning
 

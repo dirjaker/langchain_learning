@@ -10,6 +10,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '速查表', link: '/CHEATSHEET' },
       { text: '技术文档', link: '/TECHNICAL_DOC' },
+      { text: '更新日志', link: '/CHANGELOG' },
       { text: 'GitHub', link: 'https://github.com/dirjaker/langchain_learning' }
     ],
     sidebar: [
@@ -25,6 +26,7 @@ export default defineConfig({
           { text: '面试速查表', link: '/CHEATSHEET' },
           { text: '技术文档', link: '/TECHNICAL_DOC' },
           { text: '技术设计文档', link: '/technical-doc-cn' },
+          { text: '更新日志', link: '/CHANGELOG' },
         ]
       },
       {
