@@ -56,6 +56,8 @@ def demo_langsmith_overview():
     print("1. LangSmith 概述与架构")
     print("=" * 60)
 
+    # 面试技巧: 五大功能是 LangSmith 面试的核心，必须背熟
+    # 每个功能对应开发流程的一个阶段，面试时要能画出这个表
     print("""
     LangSmith 五大核心功能:
 
@@ -117,7 +119,11 @@ def demo_tracing():
     print("=" * 60)
 
     # --- 模拟 RunTree 数据结构 ---
-    print("\n✅ RunTree 数据结构模拟:")
+    # 面试重点: RunTree 是 LangSmith Tracing 的核心数据结构
+    # 面试官会问: "Trace 和 Run 的区别是什么?"
+    #   答: Trace 是一次完整的用户请求（顶层容器），Run 是其中的一个步骤
+    #   一个 Trace 包含多个 Run，形成树状结构（Root Run → Child Runs）
+    print("── RunTree 数据结构 ──")
 
     class MockRun:
         """模拟 LangSmith Run 对象"""
@@ -497,6 +503,10 @@ def demo_evaluation():
     #     return {"key": "my_score", "score": score}
 
     # --- 正确性评估器 ---
+    # 面试重点: LLM-as-Judge 是评估 LLM 输出的主流方法
+    # 面试官会问: "如何评估 RAG 系统的回答质量?"
+    #   答: 多维度评估——正确性(relevance)、完整性(completeness)、准确性(accuracy)
+    #   可以用 LangSmith 内置评估器或自定义 Evaluator 类
     print("── 正确性评估器 ──")
 
     class CorrectnessEvaluator(MockEvaluator):
@@ -1207,6 +1217,10 @@ def demo_production():
               f"${est.monthly_cost:>10.2f} ${est.monthly_cost*0.3:>9.2f}")
 
     # --- 采样策略 ---
+    # 面试重点: 生产环境 LangSmith 成本控制是高级考点
+    # 三类采样策略: 随机采样(10-30%)、确定性采样(按user_id哈希)、错误全量采样
+    # 面试官追问: "为什么用确定性采样而不是随机采样?"
+    #   答: 同一用户的所有请求总是被采样或总是不被采样，便于问题复现和调试
     print("\n✅ 采样策略实现:")
 
     import random

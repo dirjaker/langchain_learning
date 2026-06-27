@@ -246,6 +246,10 @@ def demo_structured_output():
     from enum import Enum
 
     # ---- 示例 1: 简单结构化输出 ----
+    # 面试技巧: Enum + BaseModel 是 Pydantic AI 最基础的模式，面试几乎必考
+    # 面试官追问: "为什么用 Enum 而不是 str?"
+    #   答: Enum 提供编译时类型安全，防止 typo（如 'positive'→'postive'），
+    #   且 LLM 更容易理解有限枚举值，输出更准确
     print("\n✅ 示例 1: 简单结构化输出")
 
     class Sentiment(str, Enum):
@@ -270,6 +274,10 @@ def demo_structured_output():
     print(f"  结果: {result.output}")
 
     # ---- 示例 2: 嵌套模型 ----
+    # 面试重点: 嵌套模型是区分初级和高级的考点
+    # 面试官会问: "如何处理复杂的嵌套 JSON 输出?"
+    #   标准答: 用 Pydantic 嵌套模型 + Field(description=) 告诉 LLM 每个字段的含义
+    #   这样 LLM 会自动填充所有嵌套层级，无需手动解析 JSON
     print("\n✅ 示例 2: 嵌套 Pydantic 模型")
 
     class Address(BaseModel):
@@ -403,6 +411,11 @@ def demo_dependency_injection():
     from typing import Dict, List
 
     # ---- 示例 1: 基本依赖注入 ----
+    # 面试重点: 依赖注入是 Pydantic AI 区别于 LangChain 的核心特性
+    # 面试官会问: "Pydantic AI 的依赖注入和 FastAPI 的 Depends() 有什么异同?"
+    #   答: 理念相同——都解耦了"创建"和"使用"。Pydantic AI 通过 deps_type + RunContext
+    #   实现，在 Agent 运行时通过 run_sync(deps=...) 注入。
+    #   FastAPI 用 Depends() 函数，Pydantic AI 用 dataclass + 类型标注。
     print("\n✅ 示例 1: 基本依赖注入")
 
     @dataclass
