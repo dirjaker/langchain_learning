@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'LangChain Learning',
-  description: 'LangChain + LangGraph 学习实战',
+  description: 'LangChain + LangGraph + Pydantic AI + LangSmith 学习实战',
   base: '/langchain_learning/',
   themeConfig: {
     nav: [
@@ -37,6 +37,8 @@ export default defineConfig({
           { text: '实战示例', link: '/03_practical_examples' },
           { text: '核心组件', link: '/04_core_components' },
           { text: 'LangGraph 高级', link: '/05_langgraph_advanced' },
+          { text: 'Pydantic AI 框架', link: '/06_pydantic_ai' },
+          { text: 'LangSmith 观测', link: '/07_langsmith' },
         ]
       }
     ],

@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "LangChain Learning"
   text: "LangChain + LangGraph 学习实战"
-  tagline: "LCEL · RAG · Agent · 记忆系统 · LangGraph 状态图 · CrewAI"
+  tagline: "LCEL · RAG · Agent · 记忆系统 · LangGraph 状态图 · Pydantic AI · CrewAI"
   actions:
     - theme: brand
       text: 面试速查表
@@ -40,6 +40,10 @@ features:
     title: LangGraph 高级
     details: 子图、并行执行、流式输出、检查点、Map-Reduce
     link: /05_langgraph_advanced
+  - icon: 🤖
+    title: Pydantic AI 框架
+    details: Agent 定义、结构化输出、依赖注入、流式输出、多 Agent 协作
+    link: /06_pydantic_ai
   - icon: 📖
     title: 面试速查表
     details: 面试前 30 分钟快速复习，覆盖所有高频考点

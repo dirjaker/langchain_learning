@@ -28,6 +28,8 @@ orjson==3.11.9
 ormsgpack==1.12.2
 propcache==0.5.2
 pydantic==2.13.4
+pydantic-ai==2.0.0
+pydantic-ai-slim==2.0.0
 pydantic-settings==2.14.1
 pydantic_core==2.46.4
 python-dotenv==1.2.2
