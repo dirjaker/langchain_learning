@@ -257,6 +257,21 @@ def demo_version_comparison():
 
 
 # ============================================================
+# 6. 版本升级踩坑指南
+# ============================================================
+# 面试要点: 被问"你遇到过 LangChain 版本升级的坑吗"是高级考点
+# ============================================================
+
+def demo_migration_pitfalls():
+    """版本升级踩坑指南 — 生产环境真实经验"""
+    print("=" * 60)
+    print("6. 版本升级踩坑指南 (Migration Pitfalls)")
+    print("=" * 60)
+
+    # ... 9 个真实踩坑案例 (详见 .py 文件) ...
+
+
+# ============================================================
 # 主函数
 # ============================================================
 
@@ -266,10 +281,65 @@ def main():
     demo_runnable()
     demo_structured_output()
     demo_version_comparison()
+    demo_migration_pitfalls()
 
 
 if __name__ == "__main__":
     main()
 ```
+
+:::
+
+---
+
+## 📌 版本升级踩坑详解
+
+> 面试高频：面试官常问"你在实际项目中使用 LangChain 遇到过什么坑？"
+
+### 坑 1: Import 路径大迁移 (0.1.x → 0.2.x)
+
+| 旧版 (0.1.x) | 新版 (0.2.x+) |
+|-------------|--------------|
+| `langchain.llms.OpenAI` | `langchain_openai.ChatOpenAI` |
+| `langchain.chains.LLMChain` | 废弃，用 LCEL |
+| `langchain.prompts` | `langchain_core.prompts` |
+| `langchain.memory` | `langchain_community.memory` |
+| `langchain.agents` | `langgraph.prebuilt.create_react_agent` |
+
+**面试标准答**: "LangChain 在 0.2 之后将包拆分为 core（抽象层）、community（社区集成）、专用包（如 langchain-openai）。迁移时最大的坑是 import 路径全变了，建议在 CI 中加一行 `python -c 'import my_app'` 来提前发现。"
+
+### 坑 2: LLMChain 废弃
+
+`run()` 方法废弃→改用 `invoke()`，关键字传参→字典传参。
+
+### 坑 3: `format_messages()` 参数冲突
+
+prompt 中有 `{role}` 占位符时，`format_messages(role="expert")` 会报 KeyError。**解法: 用 `.partial(role="expert")` 预填充。**
+
+### 坑 4: Agent 框架重构
+
+`initialize_agent()` + `AgentType` 枚举完全废弃，统一用 `langgraph.prebuilt.create_react_agent()`。
+
+### 坑 5-9
+
+| 坑 | 现象 | 解法 |
+|----|------|------|
+| 包版本冲突 | `ImportError: cannot import BaseMessage` | `pip check` + 锁定版本范围 |
+| ChatOpenAI 参数 | `model_name`→`model`, `max_tokens`→`max_completion_tokens` | 阅读 OpenAI CHANGELOG |
+| Memory import | `langchain.memory`→`langchain_community.memory` | 新项目用 LangGraph Checkpoint |
+| Pydantic v1→v2 | `BaseSettings moved` | `pip install pydantic>=2.0` + 迁移 `@validator` |
+| Callback 降级 | 不再推荐自定义 Callback | 改用 LangSmith `@traceable` |
+
+### 📋 升级检查清单
+
+- [ ] Import 路径全量检查
+- [ ] `LLMChain` → LCEL
+- [ ] `format_messages()` → `.partial()`
+- [ ] Agent: `initialize_agent` → `create_react_agent`
+- [ ] `pip check` 版本一致性
+- [ ] ChatOpenAI 参数名适配
+- [ ] Memory 迁移到 LangGraph Checkpoint
+- [ ] Pydantic v2 适配
+- [ ] CI: `python -c "import langchain; import langchain_core"`
 
 :::
